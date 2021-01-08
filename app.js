@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const { mongodb_url } = require('./config');
-const cors = require('cors');
+
 
 //let fileStorage = multer.memoryStorage()
 
