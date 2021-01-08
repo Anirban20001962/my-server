@@ -15,7 +15,6 @@ exports.getPosts = (req, res, next) => {
         return Post.find().skip((currentPage-1)*perPage).limit(perPage)
     })
     .then(posts => {
-        console.log(posts);
         res.status(200).json({message: 'Fetched posts successfully', posts: posts, totalItems: totalItems})
     })
     .catch(err => {
@@ -35,13 +34,11 @@ exports.createPost = async(req, res, next) => {
     const uploader = async (path) => await cloudinary.uploads(path,'images');
     uploader(req.file.path)
     .then(result => {
-        console.log(result);
         fs.unlinkSync(req.file.path);
         const title = req.body.title;
         const content = req.body.content;
         const url = result.secure_url
         const public_id = result.id
-        console.log(req.userId);
         let creator1;
         const post = new Post({
             title: title, 

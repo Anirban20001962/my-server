@@ -3,11 +3,12 @@ const {cloudinary_cloud_name,cloudinary_api_key,cloudinary_api_secret} = require
 cloudinary.config({
     cloud_name: cloudinary_cloud_name, 
     api_key: cloudinary_api_key, 
-    api_secret: cloudinary_api_secret 
+    api_secret: cloudinary_api_secret
 })
 exports.uploads = (file,folder) => {
     return new Promise(resolve => {
         cloudinary.uploader.upload(file,(result) => {
+            console.log(result);
             resolve({
                 url: result.url,
                 secure_url: result.secure_url,

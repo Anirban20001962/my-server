@@ -4,7 +4,6 @@ module.exports = (req, res, next) => {
     const token = req.get('Authorization');
     let decodeToken;
     try {
-        console.log(json_secret_key)
         decodeToken = jwt.verify(token,json_secret_key);
     }
     catch(err) {
