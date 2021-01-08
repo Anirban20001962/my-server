@@ -39,15 +39,15 @@ app.use(bodyParser.json());
 app.use(multer({ storage: fileStorage,fileFilter: fileFilter}).single('image'))
 app.use('/images', express.static(path.join(__dirname,'images')))
 
-app.use((req, res, next) => {
-    /*res.setHeader('Accept', 'application/json');
+/*app.use((req, res, next) => {
+    res.setHeader('Accept', 'application/json');
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type,  Authorization");
-    next();*/
-    cors();
-})
+    next();
+})*/
+app.use(cors())
 
 app.use('/feed',feedRoutes);
 app.use('/auth',authRoutes);
