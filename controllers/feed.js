@@ -31,6 +31,7 @@ exports.createPost = async(req, res, next) => {
         error.statusCode = 422;
         throw error;
     }
+    console.log('Not cors you bitch');
     const uploader = async (path) => await cloudinary.uploads(path,'images');
     uploader(req.file.path)
     .then(result => {
